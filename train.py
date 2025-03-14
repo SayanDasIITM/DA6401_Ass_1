@@ -2,7 +2,6 @@ import numpy as np
 from sklearn.preprocessing import OneHotEncoder
 from keras.datasets import fashion_mnist
 
-# Load and preprocess data
 def load_data():
     (x_train, y_train), (x_test, y_test) = fashion_mnist.load_data()
     x_train, x_test = x_train / 255.0, x_test / 255.0
@@ -11,7 +10,6 @@ def load_data():
     y_train, y_test = encoder.fit_transform(y_train.reshape(-1, 1)), encoder.transform(y_test.reshape(-1, 1))
     return x_train, y_train, x_test, y_test
 
-# Activation functions and derivatives
 class Activation:
     @staticmethod
     def relu(x): return np.maximum(0, x)
@@ -22,7 +20,6 @@ class Activation:
         exp_x = np.exp(x - np.max(x, axis=1, keepdims=True))
         return exp_x / np.sum(exp_x, axis=1, keepdims=True)
 
-# Neural network class
 def initialize_weights(layer_sizes):
     weights = [np.random.randn(layer_sizes[i], layer_sizes[i+1]) * np.sqrt(2.0 / layer_sizes[i]) for i in range(len(layer_sizes)-1)]
     biases = [np.zeros((1, layer_sizes[i+1])) for i in range(len(layer_sizes)-1)]
@@ -51,7 +48,6 @@ class NeuralNetwork:
         grad_b = [np.sum(deltas[i], axis=0, keepdims=True) / y_true.shape[0] for i in range(len(self.biases))]
         return grad_w, grad_b
 
-# Optimizer implementations
 class Optimizer:
     def __init__(self, method='adam', lr=0.001, momentum=0.9, beta1=0.9, beta2=0.999, epsilon=1e-8):
         self.method, self.lr, self.momentum, self.beta1, self.beta2, self.epsilon = method, lr, momentum, beta1, beta2, epsilon
@@ -86,7 +82,6 @@ class Optimizer:
                 weights[i] -= self.lr * m_hat_w / (np.sqrt(v_hat_w) + self.epsilon)
                 biases[i] -= self.lr * m_hat_b / (np.sqrt(v_hat_b) + self.epsilon)
 
-# Training loop
 def train(model, optimizer, X_train, y_train, epochs=10, batch_size=64):
     num_samples, t = X_train.shape[0], 0
     for epoch in range(epochs):
@@ -100,7 +95,6 @@ def train(model, optimizer, X_train, y_train, epochs=10, batch_size=64):
             optimizer.update(model.weights, model.biases, grad_w, grad_b, t)
         print(f"Epoch {epoch+1}/{epochs} completed.")
 
-# Main execution
 if __name__ == "__main__":
     X_train, y_train, X_test, y_test = load_data()
     model = NeuralNetwork([784, 128, 64, 10])
