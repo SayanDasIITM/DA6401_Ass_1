@@ -16,6 +16,10 @@ pip install numpy matplotlib seaborn pandas plotly scikit-learn keras tensorflow
 
 ## How to Run
 
+### Important Note on Running Sweeps
+After running a sweep, a file `sweep_id.txt` is created to store the sweep ID. If you want to run a new sweep, you must first delete the existing `sweep_id.txt` file before starting a new sweep.
+
+
 ### Running `Question_1.py`
 
 This script loads and visualizes sample images from the Fashion-MNIST dataset and logs them to Weights & Biases.
