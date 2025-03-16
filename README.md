@@ -68,7 +68,7 @@ python train.py -e 20 -b 32 -o rmsprop -lr 0.0005 -nhl 4 -sz 256
 ## Report
 
 The detailed experiment report is available at:
-[Weights & Biases Report](https://wandb.ai/cs24m044-iit-madras-alumni-association/neural-network-sweep/reports/DA6401-Assignment-1--VmlldzoxMTcwODQ2Mg)
+[Weights & Biases Report]([https://wandb.ai/cs24m044-iit-madras-alumni-association/neural-network-sweep/reports/DA6401-Assignment-1--VmlldzoxMTcwODQ2Mg](https://api.wandb.ai/links/cs24m044-iit-madras-alumni-association/vzk6r03m))
 
 ## Self Declaration
 I, Sayan Das (cs24m044), declare that I have implemented the code and report independently, without unauthorized collaboration.
