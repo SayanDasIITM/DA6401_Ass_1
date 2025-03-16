@@ -1,79 +1,74 @@
-# Fashion-MNIST Neural Network Training
+# DA6401 - Assignment 1: Neural Network Training and Experiment Tracking
 
-This repository contains Python scripts for loading, visualizing, and training a neural network on the Fashion-MNIST dataset using `wandb` for logging.
+This repository contains code for DA6401 - Assignment 1, which involves implementing a feedforward neural network with backpropagation and tracking experiments using Weights & Biases (wandb).
 
-## Installation
+## Contents
+- `Question_1.py`: Loads and visualizes the Fashion-MNIST dataset.
+- `train.py`: Implements and trains a neural network using different optimizers, activation functions, and hyperparameters, with wandb logging.
 
-Before running the scripts, install the required dependencies using:
+## Requirements
+
+Ensure you have the following dependencies installed:
 
 ```bash
-pip install numpy matplotlib seaborn plotly scikit-learn keras pandas wandb
+pip install numpy matplotlib seaborn pandas plotly scikit-learn keras tensorflow wandb
 ```
 
-## Usage
+## How to Run
 
-### 1. Visualizing Fashion-MNIST Samples
+### Running `Question_1.py`
 
-Run the `Question_1.py` script to visualize sample images from the dataset and log them to Weights & Biases.
+This script loads and visualizes sample images from the Fashion-MNIST dataset and logs them to Weights & Biases.
 
 ```bash
 python Question_1.py
 ```
 
-### 2. Training the Neural Network
+### Running `train.py`
 
-The `train.py` script trains a fully connected neural network with configurable hyperparameters.
+This script trains a feedforward neural network with various configurable options.
 
-#### Running the default training:
+Basic command:
+
 ```bash
 python train.py
 ```
 
-#### Available Arguments:
+### Command-Line Arguments
 
-- `--dataset` : Dataset to use (`fashion_mnist` or `mnist`). Default: `fashion_mnist`
-- `--epochs` : Number of training epochs. Default: `10`
-- `--batch_size` : Batch size. Default: `64`
-- `--loss` : Loss function (`mean_squared_error` or `cross_entropy`). Default: `cross_entropy`
-- `--optimizer` : Optimizer (`sgd`, `momentum`, `nag`, `rmsprop`, `adam`, `nadam`). Default: `adam`
-- `--learning_rate` : Learning rate. Default: `0.001`
-- `--num_layers` : Number of hidden layers. Default: `3`
-- `--hidden_size` : Neurons per hidden layer. Default: `128`
-- `--activation` : Activation function (`identity`, `sigmoid`, `tanh`, `ReLU`). Default: `ReLU`
+| Argument | Default | Description |
+|----------|---------|-------------|
+| `-wp, --wandb_project` | "neural-network-sweep" | Weights & Biases project name |
+| `-we, --wandb_entity` | "cs24m044-iit-madras-alumni-association" | Weights & Biases entity name |
+| `-d, --dataset` | "fashion_mnist" | Dataset to use (`mnist` or `fashion_mnist`) |
+| `-e, --epochs` | 10 | Number of training epochs |
+| `-b, --batch_size` | 64 | Batch size |
+| `-l, --loss` | "cross_entropy" | Loss function (`cross_entropy` or `mean_squared_error`) |
+| `-o, --optimizer` | "adam" | Optimizer (`sgd`, `momentum`, `nag`, `rmsprop`, `adam`, `nadam`) |
+| `-lr, --learning_rate` | 0.001 | Learning rate |
+| `-m, --momentum` | 0.9 | Momentum for optimizers |
+| `-nhl, --num_layers` | 3 | Number of hidden layers |
+| `-sz, --hidden_size` | 128 | Neurons per hidden layer |
+| `-a, --activation` | "ReLU" | Activation function (`identity`, `sigmoid`, `tanh`, `ReLU`) |
+| `--compare_losses` | False | Compare cross-entropy vs. MSE loss |
+| `--mnist_recommend` | False | Run recommended MNIST configurations |
+| `--sweep` | False | Run wandb sweep experiment |
+| `--analyze` | False | Run hyperparameter analysis |
 
-#### Example Usage:
+Example:
+
 ```bash
-python train.py --dataset mnist --epochs 20 --batch_size 32 --optimizer adam --learning_rate 0.0005
+python train.py -e 20 -b 32 -o rmsprop -lr 0.0005 -nhl 4 -sz 256
 ```
 
-### 3. Running Hyperparameter Analysis
+## Report
 
-To analyze hyperparameter performance:
-```bash
-python train.py --analyze
-```
+The detailed experiment report is available at:
+[Weights & Biases Report](https://wandb.ai/cs24m044-iit-madras-alumni-association/neural-network-sweep/reports/DA6401-Assignment-1--VmlldzoxMTcwODQ2Mg)
 
-### 4. Running a WandB Sweep for Hyperparameter Tuning
+## Self Declaration
+I, Sayan Das (cs24m044), declare that I have implemented the code and report independently, without unauthorized collaboration.
 
-To start a sweep:
-```bash
-python train.py --sweep
-```
-
-## Logging with WandB
-
-Ensure you are logged into WandB before running the scripts. If required, create a `wandb_api.txt` file with your API key.
-```bash
-wandb login
-```
-
-## Results
-
-- Training and validation loss/accuracy are logged to WandB.
-- A confusion matrix is generated after training.
-- Hyperparameter analysis is stored in `parallel_coordinates.html` and `correlation_heatmap.png`.
-
-## License
-
-This project is open-source under the MIT License.
+## Contact
+For any queries, open an issue in this repository.
 
