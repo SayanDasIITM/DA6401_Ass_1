@@ -65,6 +65,35 @@ Example:
 python train.py -e 20 -b 32 -o rmsprop -lr 0.0005 -nhl 4 -sz 256
 ```
 
+## Code Organization
+The code is organized into modular components to ensure clarity, maintainability, and scalability:
+
+- `Data Loading & Preprocessing`:
+Functions are provided to load datasets (Fashion-MNIST or MNIST), perform train/validation/test splits, scale the data, reshape images, and one-hot encode labels.
+
+- `Activation Functions & Derivatives`:
+Contains implementations for various activation functions (ReLU, Sigmoid, Tanh, Softmax) along with their derivatives, which are essential for the backpropagation process.
+
+- `Weight Initialization`:
+Supports different methods (Random, Xavier) to initialize network weights and biases, ensuring that the network starts training with appropriate scale.
+
+- `Neural Network Model`:
+The NeuralNetwork class encapsulates both forward and backward propagation. It supports multiple activation functions and is configurable via command-line arguments.
+
+- `Loss Functions & Accuracy`:
+Implements commonly used loss functions (cross-entropy, mean squared error) and an accuracy metric to evaluate model performance.
+
+- `Optimizer with Gradient Clipping`:
+The Optimizer class includes various optimization algorithms (SGD, Momentum, Nesterov, RMSprop, Adam, Nadam) and uses gradient clipping to prevent exploding gradients.
+
+- `Trainer Class`:
+Manages the training loop, including batch processing, metric logging to wandb, and evaluation on validation and test sets.
+
+- `Analysis & Visualization`:
+Provides tools for generating interactive plots such as confusion matrices and hyperparameter analysis plots (parallel coordinates, correlation heatmaps).
+
+This structure facilitates easier debugging, updates, and scalability of the project.
+
 ## Report
 
 The detailed experiment report is available at:
