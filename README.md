@@ -1,6 +1,6 @@
 # DA6401 - Assignment 1: Neural Network Training and Experiment Tracking
 
-This repository contains code for DA6401 - Assignment 1, which involves implementing a feedforward neural network with backpropagation and tracking experiments using Weights & Biases (wandb).
+This repository contains code for DA6401 - Assignment 1, which involves implementing a feedforward neural network with backpropagation and tracking experiments using Weights & Biases (wandb). The github_link for the following is :-
 
 ## Contents
 - `Question_1.py`: Loads and visualizes the Fashion-MNIST dataset.
